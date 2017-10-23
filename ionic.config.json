@@ -2,5 +2,7 @@
   "name": "madmap-mobile",
   "app_id": "690f8662",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }
