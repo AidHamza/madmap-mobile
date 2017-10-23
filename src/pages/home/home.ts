@@ -7,18 +7,49 @@ import { MediaPlugin } from 'ionic-native';
   templateUrl: 'home.html'
 })
 export class HomePage {
+	media: MediaPlugin;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  	ionViewDidEnter() {
+    	this.media = new MediaPlugin('../Library/NoCloud/recording.wav')
+  	}
+  	
+	constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
 
-  }
+	}
 
-  public startRecording() {
+	public startRecording() {
 	  try {
-	    let media = new MediaPlugin('../Library/NoCloud/recording.wav');
-	    media.startRecord();
+	    this.media.startRecord();
 	  }
 	  catch (e) {
 	    this.showAlert('Could not start recording.');
+	  }
+	}
+
+	public stopRecording() {
+	  try {
+	    this.media.stopRecord();
+	  }
+	  catch (e) {
+	    this.showAlert('Could not stop recording.');
+	  }
+	}
+
+	public startPlayback() {
+	  try {
+	    this.media.play();
+	  }
+	  catch (e) {
+	    this.showAlert('Could not play recording.');
+	  }
+	}
+
+	public stopPlayback() {
+	  try {
+	    this.media.stop();
+	  }
+	  catch (e) {
+	    this.showAlert('Could not stop playing recording.');
 	  }
 	}
 
